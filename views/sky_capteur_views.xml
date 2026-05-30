@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Vue liste -->
+        <record id="view_sky_capteur_tree" model="ir.ui.view">
+            <field name="name">sky.capteur.tree</field>
+            <field name="model">sky.capteur</field>
+            <field name="arch" type="xml">
+                <list string="Capteurs" decoration-success="state == 'active'" decoration-danger="state == 'panne'" decoration-muted="state == 'inactive'">
+                    <field name="name"/>
+                    <field name="installation_id"/>
+                    <field name="type_capteur"/>
+                    <field name="protocole"/>
+                    <field name="serial_number"/>
+                    <field name="date_installation"/>
+                    <field name="state" widget="badge"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Vue formulaire -->
+        <record id="view_sky_capteur_form" model="ir.ui.view">
+            <field name="name">sky.capteur.form</field>
+            <field name="model">sky.capteur</field>
+            <field name="arch" type="xml">
+                <form string="Capteur Physique">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="active,inactive,panne"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Nom du capteur"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="Identification">
+                                <field name="installation_id"/>
+                                <field name="serial_number"/>
+                                <field name="date_installation"/>
+                            </group>
+                            <group string="Caractéristiques">
+                                <field name="type_capteur"/>
+                                <field name="protocole"/>
+                                <field name="state"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Lectures" name="lectures">
+                                <field name="lecture_ids" context="{'default_capteur_id': id}">
+                                    <list>
+                                        <field name="date_lecture"/>
+                                        <field name="energie_kwh"/>
+                                        <field name="puissance_instantanee"/>
+                                        <field name="temperature"/>
+                                        <field name="source"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action window -->
+        <record id="action_sky_capteur" model="ir.actions.act_window">
+            <field name="name">Capteurs</field>
+            <field name="res_model">sky.capteur</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Ajoutez un capteur à vos installations !
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

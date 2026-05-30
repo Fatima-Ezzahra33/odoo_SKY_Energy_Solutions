@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Vue liste -->
+        <record id="view_sky_rendement_tree" model="ir.ui.view">
+            <field name="name">sky.rendement.tree</field>
+            <field name="model">sky.rendement</field>
+            <field name="arch" type="xml">
+                <list string="Rendements" decoration-success="state == 'normal'" decoration-warning="state == 'warning'" decoration-danger="state == 'critical'">
+                    <field name="name"/>
+                    <field name="installation_id"/>
+                    <field name="periode_debut"/>
+                    <field name="periode_fin"/>
+                    <field name="energie_reelle_kwh"/>
+                    <field name="energie_prevue_kwh"/>
+                    <field name="performance_ratio" string="PR (%)"/>
+                    <field name="ecart_percent" string="Écart (%)"/>
+                    <field name="state" widget="badge"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Vue formulaire -->
+        <record id="view_sky_rendement_form" model="ir.ui.view">
+            <field name="name">sky.rendement.form</field>
+            <field name="model">sky.rendement</field>
+            <field name="arch" type="xml">
+                <form string="Rendement Énergétique">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Référence rendement"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="Identification">
+                                <field name="installation_id"/>
+                                <field name="periode_debut"/>
+                                <field name="periode_fin"/>
+                            </group>
+                            <group string="Résultats calculés">
+                                <field name="performance_ratio" readonly="1"/>
+                                <field name="ecart_percent" readonly="1"/>
+                                <field name="state" readonly="1" widget="badge"/>
+                            </group>
+                        </group>
+                        <group string="Données énergétiques">
+                            <field name="energie_reelle_kwh"/>
+                            <field name="energie_prevue_kwh"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action window -->
+        <record id="action_sky_rendement" model="ir.actions.act_window">
+            <field name="name">Rendements</field>
+            <field name="res_model">sky.rendement</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Calculez le rendement de vos installations !
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

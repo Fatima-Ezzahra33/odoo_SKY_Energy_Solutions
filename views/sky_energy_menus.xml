@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Menu racine -->
+        <menuitem
+            id="menu_sky_energy_root"
+            name="Sky Energy"
+            sequence="50"
+            web_icon="sky_energy_erp,static/description/icon.png"
+        />
+
+        <!-- Sous-menus principaux -->
+        <menuitem
+            id="menu_sky_installations"
+            name="Installations"
+            parent="menu_sky_energy_root"
+            action="action_sky_installation"
+            sequence="10"
+        />
+        <menuitem
+            id="menu_sky_capteurs"
+            name="Capteurs"
+            parent="menu_sky_energy_root"
+            action="action_sky_capteur"
+            sequence="20"
+        />
+        <menuitem
+            id="menu_sky_lectures"
+            name="Lectures"
+            parent="menu_sky_energy_root"
+            action="action_sky_lecture"
+            sequence="30"
+        />
+        <menuitem
+            id="menu_sky_rendements"
+            name="Rendements"
+            parent="menu_sky_energy_root"
+            action="action_sky_rendement"
+            sequence="40"
+        />
+        <menuitem
+            id="menu_sky_alertes"
+            name="Alertes"
+            parent="menu_sky_energy_root"
+            action="action_sky_alerte"
+            sequence="50"
+        />
+        <menuitem
+            id="menu_sky_contrats"
+            name="Contrats de garantie"
+            parent="menu_sky_energy_root"
+            action="action_sky_contrat_garantie"
+            sequence="60"
+        />
+        <menuitem
+            id="menu_sky_interventions"
+            name="Interventions"
+            parent="menu_sky_energy_root"
+            action="action_sky_intervention"
+            sequence="70"
+        />
+
+    </data>
+</odoo>

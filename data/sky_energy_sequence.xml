@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Séquence pour les installations solaires -->
+        <record id="seq_sky_installation" model="ir.sequence">
+            <field name="name">Séquence Installation Solaire</field>
+            <field name="code">sky.installation</field>
+            <field name="prefix">SKY/INSTALL/</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+        <!-- Séquence pour les alertes -->
+        <record id="seq_sky_alerte" model="ir.sequence">
+            <field name="name">Séquence Alerte Sky</field>
+            <field name="code">sky.alerte</field>
+            <field name="prefix">SKY/ALERT/</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+        <!-- Séquence pour les interventions -->
+        <record id="seq_sky_intervention" model="ir.sequence">
+            <field name="name">Séquence Intervention Sky</field>
+            <field name="code">sky.intervention</field>
+            <field name="prefix">SKY/INT/</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
+
+    </data>
+</odoo>

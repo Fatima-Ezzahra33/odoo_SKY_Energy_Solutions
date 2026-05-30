@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Vue liste -->
+        <record id="view_sky_contrat_garantie_tree" model="ir.ui.view">
+            <field name="name">sky.contrat.garantie.tree</field>
+            <field name="model">sky.contrat.garantie</field>
+            <field name="arch" type="xml">
+                <list string="Contrats de garantie" decoration-success="state == 'active'" decoration-muted="state in ('expired', 'cancelled')" decoration-info="state == 'draft'">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="installation_id"/>
+                    <field name="date_debut"/>
+                    <field name="date_fin"/>
+                    <field name="energie_garantie_annuelle"/>
+                    <field name="tolerance_percent"/>
+                    <field name="state" widget="badge"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Vue formulaire -->
+        <record id="view_sky_contrat_garantie_form" model="ir.ui.view">
+            <field name="name">sky.contrat.garantie.form</field>
+            <field name="model">sky.contrat.garantie</field>
+            <field name="arch" type="xml">
+                <form string="Contrat de Garantie Énergétique">
+                    <header>
+                        <button name="action_activate" string="Activer" type="object" class="btn-success" invisible="state != 'draft'"/>
+                        <button name="action_expire" string="Marquer expiré" type="object" invisible="state != 'active'"/>
+                        <button name="action_cancel" string="Annuler" type="object" invisible="state in ('expired', 'cancelled')"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,active,expired"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Référence contrat"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="Parties">
+                                <field name="partner_id"/>
+                                <field name="installation_id"/>
+                            </group>
+                            <group string="Durée">
+                                <field name="date_debut"/>
+                                <field name="date_fin"/>
+                            </group>
+                        </group>
+                        <group string="Conditions énergétiques">
+                            <field name="energie_garantie_annuelle"/>
+                            <field name="tolerance_percent"/>
+                            <field name="penalite_percent"/>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action window -->
+        <record id="action_sky_contrat_garantie" model="ir.actions.act_window">
+            <field name="name">Contrats de garantie</field>
+            <field name="res_model">sky.contrat.garantie</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Créez un contrat de garantie énergétique !
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

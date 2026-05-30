@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Vue liste -->
+        <record id="view_sky_installation_list" model="ir.ui.view">
+            <field name="name">sky.installation.list</field>
+            <field name="model">sky.installation</field>
+            <field name="arch" type="xml">
+                <list string="Installations solaires"
+                      decoration-success="state == 'active'"
+                      decoration-warning="state == 'maintenance'"
+                      decoration-danger="state == 'stopped'"
+                      decoration-muted="state == 'draft'">
+                    <field name="reference"/>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="puissance_crete"/>
+                    <field name="orientation"/>
+                    <field name="date_mise_service"/>
+                    <field name="localisation"/>
+                    <field name="state" widget="badge"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Vue formulaire -->
+        <record id="view_sky_installation_form" model="ir.ui.view">
+            <field name="name">sky.installation.form</field>
+            <field name="model">sky.installation</field>
+            <field name="arch" type="xml">
+                <form string="Installation Solaire">
+                    <header>
+                        <button name="action_activate" string="Activer" type="object" class="btn-success" invisible="state != 'draft'"/>
+                        <button name="action_set_maintenance" string="Mettre en maintenance" type="object" class="btn-warning" invisible="state != 'active'"/>
+                        <button name="action_stop" string="Arrêter" type="object" class="btn-danger" invisible="state not in ('active', 'maintenance')"/>
+                        <button name="action_reset_draft" string="Remettre en brouillon" type="object" invisible="state == 'draft'"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,active,maintenance,stopped"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Nom de l'installation"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="Informations générales">
+                                <field name="reference" readonly="1"/>
+                                <field name="partner_id"/>
+                                <field name="date_mise_service"/>
+                                <field name="localisation"/>
+                            </group>
+                            <group string="Caractéristiques techniques">
+                                <field name="puissance_crete"/>
+                                <field name="orientation"/>
+                                <field name="inclinaison"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Capteurs" name="capteurs">
+                                <field name="capteur_ids" context="{'default_installation_id': id}">
+                                    <list editable="bottom">
+                                        <field name="name"/>
+                                        <field name="type_capteur"/>
+                                        <field name="protocole"/>
+                                        <field name="serial_number"/>
+                                        <field name="date_installation"/>
+                                        <field name="state" widget="badge"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Lectures" name="lectures">
+                                <field name="lecture_ids" context="{'default_installation_id': id}">
+                                    <list>
+                                        <field name="name"/>
+                                        <field name="date_lecture"/>
+                                        <field name="energie_kwh"/>
+                                        <field name="puissance_instantanee"/>
+                                        <field name="source"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Rendements" name="rendements">
+                                <field name="rendement_ids" context="{'default_installation_id': id}">
+                                    <list>
+                                        <field name="name"/>
+                                        <field name="periode_debut"/>
+                                        <field name="periode_fin"/>
+                                        <field name="energie_reelle_kwh"/>
+                                        <field name="energie_prevue_kwh"/>
+                                        <field name="performance_ratio"/>
+                                        <field name="state" widget="badge"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Alertes" name="alertes">
+                                <field name="alerte_ids" context="{'default_installation_id': id}">
+                                    <list>
+                                        <field name="name"/>
+                                        <field name="type_alerte"/>
+                                        <field name="date_alerte"/>
+                                        <field name="severity" widget="badge"/>
+                                        <field name="state" widget="badge"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Interventions" name="interventions">
+                                <field name="intervention_ids" context="{'default_installation_id': id}">
+                                    <list>
+                                        <field name="name"/>
+                                        <field name="type_intervention"/>
+                                        <field name="technicien_id"/>
+                                        <field name="date_planifiee"/>
+                                        <field name="state" widget="badge"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page string="Notes" name="notes">
+                                <field name="notes" placeholder="Entrez vos notes ici..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action window -->
+        <record id="action_sky_installation" model="ir.actions.act_window">
+            <field name="name">Installations solaires</field>
+            <field name="res_model">sky.installation</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Créez votre première installation solaire !
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

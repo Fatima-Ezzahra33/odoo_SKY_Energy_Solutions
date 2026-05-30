@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sky_installation_user,sky.installation user,model_sky_installation,base.group_user,1,1,1,1
+access_sky_capteur_user,sky.capteur user,model_sky_capteur,base.group_user,1,1,1,1
+access_sky_lecture_user,sky.lecture user,model_sky_lecture,base.group_user,1,1,1,1
+access_sky_rendement_user,sky.rendement user,model_sky_rendement,base.group_user,1,1,1,1
+access_sky_alerte_user,sky.alerte user,model_sky_alerte,base.group_user,1,1,1,1
+access_sky_contrat_garantie_user,sky.contrat.garantie user,model_sky_contrat_garantie,base.group_user,1,1,1,1
+access_sky_intervention_user,sky.intervention user,model_sky_intervention,base.group_user,1,1,1,1
