@@ -21,7 +21,6 @@
     'data': [
         'security/ir.model.access.csv',
         'data/sky_energy_sequence.xml',
-        'views/sky_energy_menus.xml',
         'views/sky_installation_views.xml',
         'views/sky_capteur_views.xml',
         'views/sky_lecture_views.xml',
@@ -29,6 +28,7 @@
         'views/sky_alerte_views.xml',
         'views/sky_contrat_garantie_views.xml',
         'views/sky_intervention_views.xml',
+        'views/sky_energy_menus.xml',  # <-- LAST
     ],
     'installable': True,
     'application': True,

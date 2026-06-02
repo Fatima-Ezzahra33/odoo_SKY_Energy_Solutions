@@ -7,7 +7,7 @@
             id="menu_sky_energy_root"
             name="Sky Energy"
             sequence="50"
-            web_icon="sky_energy_erp,static/description/icon.png"
+            web_icon="sky_energy,static/description/icon.png"
         />
 
         <!-- Sous-menus principaux -->
