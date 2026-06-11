@@ -1,8 +1,22 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_sky_installation_user,sky.installation user,model_sky_installation,base.group_user,1,1,1,1
-access_sky_capteur_user,sky.capteur user,model_sky_capteur,base.group_user,1,1,1,1
-access_sky_lecture_user,sky.lecture user,model_sky_lecture,base.group_user,1,1,1,1
-access_sky_rendement_user,sky.rendement user,model_sky_rendement,base.group_user,1,1,1,1
-access_sky_alerte_user,sky.alerte user,model_sky_alerte,base.group_user,1,1,1,1
-access_sky_contrat_garantie_user,sky.contrat.garantie user,model_sky_contrat_garantie,base.group_user,1,1,1,1
-access_sky_intervention_user,sky.intervention user,model_sky_intervention,base.group_user,1,1,1,1
+# Rules for Manager
+access_sky_installation_manager,sky.installation manager,model_sky_installation,sky_energy.group_sky_manager,1,1,1,1
+access_sky_capteur_manager,sky.capteur manager,model_sky_capteur,sky_energy.group_sky_manager,1,1,1,1
+access_sky_lecture_manager,sky.lecture manager,model_sky_lecture,sky_energy.group_sky_manager,1,1,1,1
+access_sky_rendement_manager,sky.rendement manager,model_sky_rendement,sky_energy.group_sky_manager,1,1,1,1
+access_sky_alerte_manager,sky.alerte manager,model_sky_alerte,sky_energy.group_sky_manager,1,1,1,1
+access_sky_contrat_garantie_manager,sky.contrat.garantie manager,model_sky_contrat_garantie,sky_energy.group_sky_manager,1,1,1,1
+access_sky_intervention_manager,sky.intervention manager,model_sky_intervention,sky_energy.group_sky_manager,1,1,1,1
+
+# Rules for Technician
+access_sky_installation_tech,sky.installation tech,model_sky_installation,sky_energy.group_sky_technicien,1,0,0,0
+access_sky_capteur_tech,sky.capteur tech,model_sky_capteur,sky_energy.group_sky_technicien,1,0,0,0
+access_sky_lecture_tech,sky.lecture tech,model_sky_lecture,sky_energy.group_sky_technicien,1,1,1,0
+access_sky_rendement_tech,sky.rendement tech,model_sky_rendement,sky_energy.group_sky_technicien,1,0,0,0
+access_sky_alerte_tech,sky.alerte tech,model_sky_alerte,sky_energy.group_sky_technicien,1,1,1,0
+access_sky_contrat_garantie_tech,sky.contrat.garantie tech,model_sky_contrat_garantie,sky_energy.group_sky_technicien,0,0,0,0
+access_sky_intervention_tech,sky.intervention tech,model_sky_intervention,sky_energy.group_sky_technicien,1,1,1,0
+
+# Rules for Client (Portal)
+access_sky_installation_portal,sky.installation portal,model_sky_installation,base.group_portal,1,0,0,0
+access_sky_lecture_portal,sky.lecture portal,model_sky_lecture,base.group_portal,1,0,0,0

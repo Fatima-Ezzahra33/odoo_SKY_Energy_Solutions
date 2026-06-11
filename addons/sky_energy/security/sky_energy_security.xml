@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Catégorie de sécurité -->
+        <record id="module_category_sky_energy" model="ir.module.category">
+            <field name="name">Sky Energy</field>
+            <field name="description">Gestion des accès pour Sky Energy Monitoring</field>
+            <field name="sequence">10</field>
+        </record>
+
+        <!-- Groupe Technicien -->
+        <record id="group_sky_technicien" model="res.groups">
+            <field name="name">Technicien</field>
+            <field name="category_id" ref="module_category_sky_energy"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- Groupe Manager -->
+        <record id="group_sky_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="module_category_sky_energy"/>
+            <field name="implied_ids" eval="[(4, ref('group_sky_technicien'))]"/>
+        </record>
+    </data>
+
+    <data>
+        <!-- Règle d'accès Record Rule pour le Portail Client : Installations -->
+        <record id="rule_sky_installation_portal" model="ir.rule">
+            <field name="name">Portail Client : Ses propres installations uniquement</field>
+            <field name="model_id" ref="model_sky_installation"/>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="domain_force">[('partner_id', '=', user.partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Règle d'accès Record Rule pour le Portail Client : Lectures -->
+        <record id="rule_sky_lecture_portal" model="ir.rule">
+            <field name="name">Portail Client : Lectures de ses propres installations</field>
+            <field name="model_id" ref="model_sky_lecture"/>
+            <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+            <field name="domain_force">[('installation_id.partner_id', '=', user.partner_id.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+    </data>
+</odoo>

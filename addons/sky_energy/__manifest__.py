@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Sky Energy ERP',
+    'name': 'Sky Energy Monitoring',
     'version': '1.0',
     'category': 'Operations/Energy',
     'summary': 'Module de supervision énergétique pour Sky Energy Solutions',
@@ -19,6 +19,7 @@
     'author': 'Sky Energy Solutions',
     'depends': ['base', 'mail'],
     'data': [
+        'security/sky_energy_security.xml',
         'security/ir.model.access.csv',
         'data/sky_energy_sequence.xml',
         'views/sky_installation_views.xml',
@@ -28,7 +29,7 @@
         'views/sky_alerte_views.xml',
         'views/sky_contrat_garantie_views.xml',
         'views/sky_intervention_views.xml',
-        'views/sky_energy_menus.xml',  # <-- LAST
+        'views/sky_energy_menus.xml',  
     ],
     'installable': True,
     'application': True,
