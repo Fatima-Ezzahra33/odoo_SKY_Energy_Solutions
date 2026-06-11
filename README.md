@@ -1,6 +1,6 @@
-# ☀️ Sky Energy — Module Odoo de Supervision Énergétique
+# ☀️ Sky Energy : Module Odoo de Supervision Énergétique
 
-> Module custom Odoo développé pour **SKY Energy Solutions** — Plateforme de gestion et de supervision des installations solaires photovoltaïques.
+> Module custom Odoo développé pour **SKY Energy Solutions** : Plateforme de gestion et de supervision des installations solaires photovoltaïques.
 
 ---
 
@@ -150,7 +150,7 @@ addons/sky_energy/
 
 ## Modèles de données
 
-### `sky.installation` — Installation Solaire
+### `sky.installation` : Installation Solaire
 Modèle central du module. Représente un parc photovoltaïque physique lié à un client.
 
 **Champs clés** : `reference` (auto), `partner_id`, `puissance_crete` (kWc), `orientation`, `inclinaison`, `date_mise_service`, `localisation`
@@ -159,7 +159,7 @@ Modèle central du module. Représente un parc photovoltaïque physique lié à 
 
 ---
 
-### `sky.capteur` — Capteur Physique IoT
+### `sky.capteur` : Capteur Physique IoT
 Inventaire des équipements de mesure déployés sur chaque installation.
 
 **Types** : Production · Irradiation · Température · Onduleur
@@ -168,14 +168,14 @@ Inventaire des équipements de mesure déployés sur chaque installation.
 
 ---
 
-### `sky.lecture` — Relevé Énergétique
+### `sky.lecture` : Relevé Énergétique
 Série temporelle des mesures collectées. Valide l'intégrité physique des données (énergie ≥ 0, température entre -30°C et +90°C).
 
 **Champs clés** : `date_lecture`, `energie_kwh`, `irradiation`, `temperature`, `puissance_instantanee`, `source`
 
 ---
 
-### `sky.rendement` — Performance Ratio
+### `sky.rendement` : Performance Ratio
 Analyse périodique automatique de la performance énergétique.
 
 **Formules** :
@@ -186,7 +186,7 @@ Analyse périodique automatique de la performance énergétique.
 
 ---
 
-### `sky.alerte` — Alerte Métier
+### `sky.alerte` : Alerte Métier
 Anomalies détectées sur les installations avec niveaux de sévérité.
 
 **Types** : Production basse · Capteur en panne · Température haute · Communication perdue
@@ -195,14 +195,14 @@ Anomalies détectées sur les installations avec niveaux de sévérité.
 
 ---
 
-### `sky.contrat.garantie` — Contrat de Garantie
+### `sky.contrat.garantie` : Contrat de Garantie
 Engagements contractuels de production annuelle entre SKY Energy Solutions et ses clients.
 
 **Paramètres financiers** : `energie_garantie_annuelle`, `tolerance_percent` (défaut 5%), `penalite_percent` (défaut 10%)
 
 ---
 
-### `sky.intervention` — Intervention Terrain
+### `sky.intervention` : Intervention Terrain
 Planification et suivi des missions de maintenance.
 
 **Types** : Corrective · Préventive · Inspection
